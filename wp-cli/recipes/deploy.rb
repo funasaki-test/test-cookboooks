@@ -32,7 +32,7 @@ execute "db create" do
    not_if do
       require 'rubygems'
       Gem.clear_paths
-      require 'mysql'
+      require 'mysql55'
       m = Mysql.new("mydb1.cyibkvmwlgp2.ap-northeast-1.rds.amazonaws.com", "awsuser", "mypassword")
       m.list_dbs.include?("mydb")
    end
