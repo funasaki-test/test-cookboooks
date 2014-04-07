@@ -33,12 +33,13 @@ execute "db create" do
       require 'rubygems'
       Gem.clear_paths
       require 'mysql'
-      m = Mysql.new("mydb.cm4rmjkwcnlv.ap-northeast-1.rds.amazonaws.com", "awsuser", "mypassword")
+      m = Mysql.new("mydb1.cyibkvmwlgp2.ap-northeast-1.rds.amazonaws.com", "awsuser", "mypassword")
       m.list_dbs.include?("mydb")
+   end
 end
 
 execute "wp deploy" do
-   command "wp db create && wp core install --url=#{public_hostname} --title=Test --admin_name=admin --admin_password=admin --admin_email=#{wp_admin_email}"
+   command "wp core install --url=#{public_hostname} --title=Test --admin_name=admin --admin_password=admin --admin_email=#{wp_admin_email}"
    cwd "#{wpdir}"
    user "deploy"
    action :run
