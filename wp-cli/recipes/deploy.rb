@@ -1,5 +1,6 @@
 require "net/http"
 require "uri"
+require "mysql"
 
 wpdir = "/srv/www/wordpress/current"
 dbname = node[:mysql][:dbname]
