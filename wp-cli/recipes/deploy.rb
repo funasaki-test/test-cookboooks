@@ -33,8 +33,8 @@ execute "db create" do
    action :run
    not_if do
       Gem.clear_paths
-      m = Mysql.new("mydb1.cyibkvmwlgp2.ap-northeast-1.rds.amazonaws.com", "awsuser", "mypassword")
-      m.list_dbs.include?("mydb")
+      m = Mysql.new("#{dbname}", "#{dbuser}", "#{dbpass}")
+      m.list_dbs.include?("#{dbname}")
    end
 end
 
