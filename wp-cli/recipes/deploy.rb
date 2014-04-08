@@ -26,16 +26,16 @@ response = http.request(request)
 
 public_hostname = response.body
 
+Gem.clear_paths
+m = Mysql.new("#{dbhost}", "#{dbuser}", "#{dbpass}")
+m.list_dbs.include?("#{dbname}")
+
 execute "db create" do
    command "wp db create"
    cwd "#{wpdir}"
    user "deploy"
    action :run
-   not_if do
-      Gem.clear_paths
-      m = Mysql.new("#{dbhost}", "#{dbuser}", "#{dbpass}")
-      m.list_dbs.include?("#{dbname}")
-   end
+   not_if (m.list_dbs.include?("#{dbname}"))
 end
 
 execute "wp deploy" do
