@@ -1,6 +1,9 @@
 require "net/http"
 require "uri"
 require "rubygems"
+
+chef_gem "mysql"
+
 require "mysql"
 
 wpdir = "/srv/www/wordpress/current"
