@@ -1,7 +1,7 @@
 require "net/http"
 require "uri"
-require 'rubygems'
-require "mysql2"
+require "rubygems"
+require "mysql"
 
 wpdir = "/srv/www/wordpress/current"
 dbname = node[:mysql][:dbname]
