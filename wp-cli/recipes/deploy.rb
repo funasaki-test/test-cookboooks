@@ -1,5 +1,6 @@
 require "net/http"
 require "uri"
+require 'rubygems'
 require "mysql"
 
 wpdir = "/srv/www/wordpress/current"
@@ -31,7 +32,6 @@ execute "db create" do
    user "deploy"
    action :run
    not_if do
-      require 'rubygems'
       Gem.clear_paths
       m = Mysql.new("mydb1.cyibkvmwlgp2.ap-northeast-1.rds.amazonaws.com", "awsuser", "mypassword")
       m.list_dbs.include?("mydb")
