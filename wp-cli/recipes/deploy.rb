@@ -33,7 +33,7 @@ execute "db create" do
    action :run
    not_if do
       Gem.clear_paths
-      m = Mysql.new("#{dbname}", "#{dbuser}", "#{dbpass}")
+      m = Mysql.new("#{dbhost}", "#{dbuser}", "#{dbpass}")
       m.list_dbs.include?("#{dbname}")
    end
 end
