@@ -38,7 +38,7 @@ execute "db create" do
    cwd "#{wpdir}"
    user "deploy"
    action :run
-   only_if (m.list_dbs.include?("#{dbname}") == false)
+   not_if (m.list_dbs.include?("#{dbname}"))
 end
 
 execute "wp deploy" do
