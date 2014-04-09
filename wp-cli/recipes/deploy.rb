@@ -1,10 +1,5 @@
 require "net/http"
 require "uri"
-require "rubygems"
-
-chef_gem "mysql"
-
-require "mysql"
 
 wpdir = "/srv/www/wordpress/current"
 dbname = node[:mysql][:dbname]
@@ -29,16 +24,12 @@ response = http.request(request)
 
 public_hostname = response.body
 
-Gem.clear_paths
-m = Mysql.new("#{dbhost}", "#{dbuser}", "#{dbpass}")
-m.list_dbs.include?("#{dbname}")
-
 execute "db create" do
    command "wp db create"
    cwd "#{wpdir}"
    user "deploy"
    action :run
-   not_if do m.list_dbs.include?("#{dbname}") end
+   ignore_failure true
 end
 
 execute "wp deploy" do
