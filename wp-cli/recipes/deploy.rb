@@ -2,9 +2,6 @@ require "net/http"
 require "uri"
 require "rubygems"
 
-package "mysql"
-package "mysql-devel"
-package "ruby-mysql"
 chef_gem "mysql"
 
 require "mysql"
