@@ -9,7 +9,7 @@ package "mysql-devel" do
 end
 
 package "ruby-mysql" do
-   action :insall
+   action :install
 end
 
 execute "wp-cli install" do
